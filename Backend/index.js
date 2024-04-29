@@ -1,32 +1,29 @@
 const dotenv = require('dotenv');
-const express=require('express');
+const express = require('express');
 const mongoose = require('mongoose');
 
-const app=express();
+
+const app = express();
 
 app.use(express.json());
 const PORT = 1999;
 dotenv.config();
 
-//db connection
-//const mongoString = process.env.DATABASE_URL;
-mongoose.connect('mongodb+srv://afif:afif12345@afif.l0krceb.mongodb.net/reservation?retryWrites=true&w=majority&appName=afif')
-const database = mongoose.connection;
-database.on('error', (error) => {
-    console.log(error)
-})
+// Connexion à la base de données
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('DATABASE Connected '))
+  .catch(err => console.error('Erreur de connexion à MongoDB :', err));
 
-database.once('connected', () => {
-    console.log('Database Connected');
-});
-// routes 
-//const salleRoutes = require("./routes/salleRoutes");
-//app.use("/salle", salleRoutes);
-//const userRoutes= require("./routes/userRoutes");
-//app.use("/user", userRoutes);
-//const reservationRoutes= require("./routes/reservationRoutes");
-//app.use("/reservation", reservationRoutes);
-
+// Routes
+const authroutes = require("./routes/authroutes");
+app.use("/",authroutes);
+const clientroutes = require("./routes/clientroutes");
+app.use("/client",clientroutes);
+const adminroutes = require("./routes/adminroutes");
+app.use("/admin",adminroutes);
+const operatorroutes = require("./routes/operatorroutes");
+app.use("/operator",operatorroutes);
+// Démarrage du serveur
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-  });
+  console.log(`Serveur is work on ${PORT}`);
+});
