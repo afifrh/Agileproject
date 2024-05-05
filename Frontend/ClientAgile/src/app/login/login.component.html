@@ -15,22 +15,18 @@
                                 </div>
                             </div>
 
-                            <form class="wptb-form"
-                                action="https://wpthemebooster.com/demo/themeforest/html/ducatibox/contact.php"
-                                method="post">
+                            <form class="wptb-form"(ngSubmit)="login()" [formGroup]="loginForm">
                                 <div class="wptb-form--inner">
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 mb-4">
                                             <div class="form-group">
-                                                <input type="text" name="name" class="form-control"
-                                                    placeholder="User Name or E-mail Address" required>
+                                                <input  type="text" name="username" class="form-control" id="yourUsername" required formControlName="username">
                                             </div>
                                         </div>
 
                                         <div class="col-lg-12 col-md-12 mb-4">
                                             <div class="form-group">
-                                                <input type="password" name="password" class="form-control"
-                                                    placeholder="Password">
+                                            <input type="password" name="password" class="form-control" id="yourPassword" required formControlName="password">
                                             </div>
                                         </div>
 

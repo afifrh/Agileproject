@@ -9,6 +9,7 @@ const AuthController = {
       const { username, password } = req.body;
       // Rechercher l'utilisateur dans la base de données
       const client = await Client.findOne({ username });
+      console.log(username,password)
       if (!client) {
         return res.status(404).json({ message: 'Nom d\'utilisateur ou mot de passe incorrect' });
       }
@@ -29,9 +30,9 @@ const AuthController = {
   // Méthode pour gérer l'inscription des utilisateurs
   register: async (req, res) => {
     try {
-      const { username, password } = req.body;
+      const { nom,prenom,email,tel,username, password,role } = req.body;
       // Créer un nouvel utilisateur
-      const client = new Client({ username, password });
+      const client = new Client({ nom,prenom,email,tel,username, password,role});
       await client.save();
       res.status(201).json({ message: 'Inscription réussie' });
     } catch (error) {

@@ -8,5 +8,14 @@ import { Component } from '@angular/core';
   styleUrl: './menu.component.css'
 })
 export class MenuComponent {
+role: string
+  
+  ngOnInit(): void {
 
+
+    this.role = localStorage.getItem('role') as string;
+
+
+    
+  }
 }

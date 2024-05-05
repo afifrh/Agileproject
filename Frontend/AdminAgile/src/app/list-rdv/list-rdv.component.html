@@ -33,18 +33,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let client of listClients">
+                                    <!-- <tr *ngFor="let client of listClients">
 
                                         <th scope="row">{{client.id}}</th>
                                         <td>{{client.nom}}</td>
                                         <td>{{client.prenom}}</td>
                                         <td>{{client.email}}</td>
                                         <td>{{client.tel}}</td>
-                                        <td *ngIf="role=='Super Admin'">
-                                            <!--<button type="submit" class="btn btn-danger"
-                                                 (click)="onDeleteClient(client)">Supprimer</button> -->
+                                        @if(role=='admin'){
+                                        <td >
+                                            <button type="submit" class="btn btn-danger"
+                                                 (click)="onDeleteClient(client)">Supprimer</button> 
                                         </td>
-                                    </tr>
+                                    }
+                                    </tr> -->
 
                                 </tbody>
                             </table>

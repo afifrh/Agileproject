@@ -24,6 +24,7 @@
     "angular-isotope": "^0.1.14",
     "angularx-flatpickr": "^7.3.0",
     "jquery-ui": "^1.13.3",
+    "ng-angular-popup": "^0.5.2",
     "ngx-image-zoom": "^3.0.0",
     "ngx-wow": "^2.0.1",
     "nice-select2": "^2.2.0",
