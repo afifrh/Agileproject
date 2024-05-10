@@ -8,46 +8,44 @@ const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
+  apiUrl = 'http://localhost:1999';
 
-apiUrl = "http://localhost:1999";
+  constructor(private http: HttpClient) {}
 
-  constructor(private http:HttpClient) {
-    
-   }
-
-
-   signup(user:any)
-  {
-    return this.http.post(`${this.apiUrl}/register`,user);
-
+  signup(user: any) {
+    return this.http.post(`${this.apiUrl}/register`, user);
   }
-  login(user:any)
-  {
-    return this.http.post(`${this.apiUrl}/login`,user).pipe(
-      tap((res:any)=>localStorage.setItem('myToken',res.access_token)),
-    )
+  login(user: any) {
+    return this.http
+      .post(`${this.apiUrl}/login`, user)
+      .pipe(
+        tap((res: any) => localStorage.setItem('myToken', res.access_token))
+      );
   }
 
-  getInfo(){
-    let token=localStorage.getItem("myToken")
-    let decoded=jwtDecode(token).sub["id"]  }
+  getUserById(id: string) {
+    return this.http.get(`${this.apiUrl + '/admin/clients'}/${id}`);
+  }
 
-  //  getInfo(token: string): Observable<any> {
+  getId() {
+    let token = localStorage.getItem('myToken');
+    let id = jwtDecode(token)['id'];
+    return id;
+  }
+  getUserRole(): string[] | null {
+    let token = localStorage.getItem('myToken');
+    let role = jwtDecode(token)['role'];
+    return role;
+  }
 
-    // const headers = new HttpHeaders().set('Authorization', `Afif ${token}`);
-    // const options = { headers };
-    // return this.http.get<any>(`${this.apiUrl}/info`,options);
-  //}
-
-
-  isLoggedIn(){
-    let token= localStorage.getItem("myToken");
-    if (token){
+  isLoggedIn() {
+    let token = localStorage.getItem('myToken');
+    if (token) {
       return true;
-    }else{
+    } else {
       return false;
     }
   }

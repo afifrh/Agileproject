@@ -4,38 +4,43 @@ import { HeaderComponent } from "../header/header.component";
 import { MenuComponent } from "../menu/menu.component";
 import { RdvService } from '../services/rdv.service';
 import { Rdv } from '../Models/Rdv.model';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { UserServiceService } from '../services/user-service.service';
+import { faClose, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
-    selector: 'app-list-rdv',
-    standalone: true,
-    templateUrl: './list-rdv.component.html',
-    styleUrl: './list-rdv.component.css',
-    imports: [FooterComponent, HeaderComponent, MenuComponent]
+  selector: 'app-list-rdv',
+  standalone: true,
+  templateUrl: './list-rdv.component.html',
+  styleUrl: './list-rdv.component.css',
+  imports: [FooterComponent, HeaderComponent, MenuComponent,FontAwesomeModule,RouterLink],
 })
 export class ListRdvComponent implements OnInit {
-    role:string
-    rdvList:any[]
-    constructor(private service: RdvService,private router:Router) {}
-    ngOnInit(): void {
-        this.role=localStorage.getItem('role')as string;
-        
-        this.service.getRdv().subscribe(data=>{
-            this.rdvList=data
-            console.log(data)
-        })
-    }
-    onDelete(id: string):void{
-       if (confirm("Voulez vous supprimer ce administrateur ?")) {
+  faClose = faClose;
+  faEdit = faEdit;
+  role: any;
+  rdvList: any[];
+  constructor(
+    private service: RdvService,
+    private userservice: UserServiceService,
+    private router: Router
+  ) {}
+  ngOnInit(): void {
 
+    this.service.getRdv().subscribe((data) => {
+      this.role = this.userservice.getUserRole();
+
+      this.rdvList = data;
+    });
+  }
+  onDelete(id: string): void {
+    if (confirm('Voulez vous supprimer ce rendez-vous ?')) {
       this.service.deleteRdv(id).subscribe(() => {
         this.router.navigate(['/ListRdv']).then(() => {
-          window.location.reload()
-        })
-      })
+          window.location.reload();
+        });
+      });
     }
-
-
-    }
-    
+  }
 }

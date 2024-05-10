@@ -20,6 +20,14 @@ export class UserServiceService {
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.apiUrl + '/admin/clients');
   }
+  getClients(): Observable<User[]> {
+    return this.http.get<User[]>(this.apiUrl + '/admin/clients/role/client');
+  }
+  getAdminsOperators(): Observable<User[]> {
+    return this.http.get<User[]>(
+      this.apiUrl + '/admin/clients/role/operator-admin'
+    );
+  }
   signup(user: any) {
     return this.http.post(`${this.apiUrl}/register`, user);
   }
@@ -55,8 +63,8 @@ export class UserServiceService {
       return false;
     }
   }
-  getUserById(id:string){
-    return this.http.get(`${this.apiUrl+'/admin/clients'}/${id}`);
+  getUserById(id: string) {
+    return this.http.get(`${this.apiUrl + '/admin/clients'}/${id}`);
   }
   deleteUser(id: string) {
     const url = `${this.apiUrl + '/admin/clients'}/${id}`;

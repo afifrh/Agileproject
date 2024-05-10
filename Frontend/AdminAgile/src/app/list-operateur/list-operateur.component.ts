@@ -23,7 +23,7 @@ export class ListOperateurComponent implements OnInit {
   role: any;
   constructor(private service: UserServiceService, private router: Router) {}
   ngOnInit(): void {
-    this.service.getUsers().subscribe((data) => {
+    this.service.getAdminsOperators().subscribe((data) => {
       this.role = this.service.getUserRole();
       this.userList = data;
     });

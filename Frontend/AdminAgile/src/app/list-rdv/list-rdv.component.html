@@ -41,12 +41,18 @@
                                         <td style="font-size: 1.25rem;">{{rdv.statut}}</td>
                                         <td style="font-size: 1.25rem;">{{rdv.numeroTicket}}</td>
                                         <td style="font-size: 1.25rem;">{{rdv.montant}}</td>
-                                        @if(role=='admin'){
+                                         @if(role=='admin'){
                                         <td >
-                                          <button type="submit" class="btn btn-danger"
-                                                 (click)="onDelete(rdv)">Supprimer</button>  
+                                             <a routerLink="upadteOperator/{{rdv._id}}" type="submit"> <fa-icon
+                                                    class=" text-warning" [icon]="faEdit"
+                                                    style="font-size: 2rem; margin: 1rem;"></fa-icon></a> 
+                                            <a type="submit" class="btn "
+                                                (click)="onDelete(rdv._id)"><fa-icon
+                                                    class=" text-danger" [icon]="faClose"
+                                                   style="font-size: 2rem;" ></fa-icon></a>
                                         </td>
-                                        }
+                                  
+                                    }
                                     </tr>
                                     }
                                 </tbody>
