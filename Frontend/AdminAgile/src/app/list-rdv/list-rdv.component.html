@@ -24,30 +24,31 @@
                             <table class="table datatable">
                                 <thead>
                                     <tr>
-                                        <th scope="col">id</th>
-                                        <th scope="col">Nom</th>
-                                        <th scope="col">Prenom</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">tel</th>
+                                        <th scope="col">Client</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Statut</th>
+                                        <th scope="col">Numero Ticket</th>
+                                        <th scope="col">Montant</th>
                                         <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- <tr *ngFor="let client of listClients">
+                                    @for (rdv of rdvList; track rdv._id) {
+                                    <tr >
 
-                                        <th scope="row">{{client.id}}</th>
-                                        <td>{{client.nom}}</td>
-                                        <td>{{client.prenom}}</td>
-                                        <td>{{client.email}}</td>
-                                        <td>{{client.tel}}</td>
+                                        <td style="font-size: 1.25rem;">{{rdv?.idClient?.username}}</td>
+                                        <td style="font-size: 1.25rem;">{{rdv.date}}</td>
+                                        <td style="font-size: 1.25rem;">{{rdv.statut}}</td>
+                                        <td style="font-size: 1.25rem;">{{rdv.numeroTicket}}</td>
+                                        <td style="font-size: 1.25rem;">{{rdv.montant}}</td>
                                         @if(role=='admin'){
                                         <td >
-                                            <button type="submit" class="btn btn-danger"
-                                                 (click)="onDeleteClient(client)">Supprimer</button> 
+                                          <button type="submit" class="btn btn-danger"
+                                                 (click)="onDelete(rdv)">Supprimer</button>  
                                         </td>
+                                        }
+                                    </tr>
                                     }
-                                    </tr> -->
-
                                 </tbody>
                             </table>
                             <!-- End Table with stripped rows -->

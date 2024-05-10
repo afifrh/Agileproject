@@ -70,6 +70,7 @@
                 </div>
 
                 <!-- Right Part -->
+                @if(!isLoggedin){
                 <div class="header_right_part d-flex align-items-center">
                     <div class="container d-flex align-items-">
                         <div class="wptb-item--button m-1">
@@ -91,14 +92,18 @@
                             </a>
                         </div>
                     </div>
-
-
-
-
-
-
-
                 </div>
+            }@else {
+                <div class="wptb-item--button m-1">
+                            <a class="btn-two" href="" (click)="Logout()">
+                                <div class="btn-wrap">
+                                    <span class="text-first">Logout</span>
+                                    <span class="text-second"> <i class="bi bi-plus"></i>
+                                    </span>
+                                </div>
+                            </a>
+                        </div>
+            }
             </div>
         </div>
     </div>

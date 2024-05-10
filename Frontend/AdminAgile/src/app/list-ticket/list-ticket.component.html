@@ -24,28 +24,25 @@
                             <table class="table datatable">
                                 <thead>
                                     <tr>
-                                        <th scope="col">id</th>
-                                        <th scope="col">Nom</th>
-                                        <th scope="col">Prenom</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">tel</th>
+                                        <th scope="col">client</th>
+                                        <th scope="col">Rendez-vous</th>
+                                        
                                         <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- <tr *ngFor="let client of listClients">
+                                    @for(ticket of TicketList;track ticket._id){
+                                    <tr >
 
-                                        <th scope="row">{{client.id}}</th>
-                                        <td>{{client.nom}}</td>
-                                        <td>{{client.prenom}}</td>
-                                        <td>{{client.email}}</td>
-                                        <td>{{client.tel}}</td>
-                                        <td *ngIf="role=='Super Admin'">
+                                        <td style="font-size: 1.25rem;">{{ticket.client}}</td>
+                                        <td style="font-size: 1.25rem;">{{ticket.rdv}}</td>
+                                        
+                                        <!-- <td *ngIf="role=='Super Admin'">
                                             <button type="submit" class="btn btn-danger"
                                                  (click)="onDeleteClient(client)">Supprimer</button> 
-                                        </td>
-                                    </tr> -->
-
+                                        </td> -->
+                                    </tr>
+                                }
                                 </tbody>
                             </table>
                             <!-- End Table with stripped rows -->

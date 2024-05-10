@@ -823,6 +823,7 @@ h1, h2, h3, h4, h5, h6 {
   border: 0;
 }
 .dashboard .top-selling .table tbody td {
+  font-size: large;
   vertical-align: middle;
 }
 .dashboard .top-selling img {

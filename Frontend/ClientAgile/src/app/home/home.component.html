@@ -19,15 +19,20 @@
                                                 <h1 class="wptb-item--title"> One Stop Solution For Car Maintenance
                                                     Repair & Detailing
                                                 </h1>
+                                                
                                                 <div class="wptb-item--button">
-                                                    <a class="btn-two" href="#">
+                                                    @if(isLoggedin){
+                                                    <a class="btn-two" href="/AddRdv">
                                                         <div class="btn-wrap">
-                                                            <span class="text-first"> Contact Us </span>
+                                                            <span class="text-first"> Prendre un rendez-vous </span>
                                                             <span class="text-second"> <i class="bi bi-plus"></i>
                                                             </span>
                                                         </div>
                                                     </a>
+                                                      }
+                                                     
                                                 </div>
+                                              
                                             </div>
                                         </div>
                                     </div>

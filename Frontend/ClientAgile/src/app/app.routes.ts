@@ -5,6 +5,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactComponent } from './contact/contact.component';
 import { E404Component } from './e404/e404.component';
 import { SignupComponent } from './signup/signup.component';
+import { AddRdvComponent } from './add-rdv/add-rdv.component';
 
 export const routes: Routes = [
     {path:'',component:HomeComponent},
@@ -12,6 +13,7 @@ export const routes: Routes = [
     {path:'Signup',component:SignupComponent},
     {path:'About',component:AboutUsComponent},
     {path:'Contact',component:ContactComponent},
+    {path:'AddRdv',component:AddRdvComponent},
     {path:'**',component:E404Component},
 
 ];

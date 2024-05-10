@@ -62,7 +62,7 @@ export class LoginComponent {
           localStorage.setItem("myToken", token);
           localStorage.setItem("role", res.role);
 
-          this.router.navigate(['/Dashboard']);
+          this.router.navigate(['']);
         },
         err => {
           console.log(err);

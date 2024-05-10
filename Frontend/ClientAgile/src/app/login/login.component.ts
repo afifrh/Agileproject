@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { User } from '../Models/User.model';
 import { UserService } from '../services/user.service';
 import { NgToastService } from 'ng-angular-popup';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -59,9 +60,9 @@ export class LoginComponent {
           console.log(res);
           let token = res.token;
           localStorage.setItem("myToken", token);
-          localStorage.setItem("role", res.role);
+          
 
-          this.router.navigate(['']);
+          this.router.navigate(['/']);
         },
         err => {
           console.log(err);

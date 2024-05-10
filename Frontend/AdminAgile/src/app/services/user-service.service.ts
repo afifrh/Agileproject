@@ -10,55 +10,60 @@ const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
-
 export class UserServiceService {
-  apiUrl = "http://localhost:1999";
+  apiUrl = 'http://localhost:1999';
 
-  constructor(private http:HttpClient) {
-    
-   }
-
+  constructor(private http: HttpClient) {}
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.apiUrl + "/admin/clients");
+    return this.http.get<User[]>(this.apiUrl + '/admin/clients');
   }
-  signup(user:any)
-  {
-    return this.http.post(`${this.apiUrl}/register`,user);
+  signup(user: any) {
+    return this.http.post(`${this.apiUrl}/register`, user);
+  }
+  //  data(token:string)
+  // {
+  //   return this.http.get(`${this.apiUrl}/info/`);
 
+  // }
+  login(user: any) {
+    return this.http
+      .post(`${this.apiUrl}/login`, user)
+      .pipe(
+        tap((res: any) =>
+          localStorage.setItem('access_token', res.access_token)
+        )
+      );
   }
-  login(user:any)
-  {
-    return this.http.post(`${this.apiUrl}/login`,user).pipe(
-      tap((res:any)=>localStorage.setItem('access_token',res.access_token)),
-    )
 
-  }
-  getToken() {
-    return localStorage.getItem('access_token');
+  getId() {
+    let token = localStorage.getItem('myToken');
+    let id = jwtDecode(token)['id'];
+    return id;
   }
   getUserRole(): string[] | null {
-    const token = this.getToken();
-    if (!token) return null;
-    const decodedToken: any = jwtDecode(token);
-    console.log("User Roles:", decodedToken.roles);
-    return decodedToken.roles;
+    let token = localStorage.getItem('myToken');
+    let role = jwtDecode(token)['role'];
+    return role;
   }
   isLoggedIn() {
-
-
-    if (this.getToken()) {
+    if (this.getId()) {
       return true;
     } else {
       return false;
     }
   }
-
-  deleteUser(id: string) {
-    const url = `${this.apiUrl + "/clients/:clientId"}/${id}`
-    return this.http.delete(url, httpOptions)
+  getUserById(id:string){
+    return this.http.get(`${this.apiUrl+'/admin/clients'}/${id}`);
   }
+  deleteUser(id: string) {
+    const url = `${this.apiUrl + '/admin/clients'}/${id}`;
+    return this.http.delete(url, httpOptions);
+  }
+  // updateUser(id: number, evaluation: User) {
+  //   const url = `${this.apiUrl + '/'}/${id}`;
+  //   return this.http.put<any>(url, evaluation);
+  // }
 }

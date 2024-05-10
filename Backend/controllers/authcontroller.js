@@ -39,7 +39,9 @@ const AuthController = {
       console.error(error);
       res.status(500).json({ message: 'Erreur lors de l\'inscription' });
     }
-  }
-};
+  },
+  
 
+
+};
 module.exports = AuthController;

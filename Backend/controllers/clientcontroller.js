@@ -18,6 +18,7 @@ const ClientController = {
   prendreRendezVous: async (req, res) => {
     try {
       const { idClient, date, statut, numeroTicket, montant } = req.body;
+      console.log( { idClient, date, statut, numeroTicket, montant } )
       // Implémenter la logique pour prendre un rendez-vous
       const nouveauRendezVous = new RendezVous({ idClient: idClient, date:date, status:statut, numeroTicket:numeroTicket, montant:montant });
       await nouveauRendezVous.save();
