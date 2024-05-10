@@ -7,6 +7,11 @@ router.get('/clients', AdminController.getAllClients);
 
 // Route pour obtenir un utilisateur par son ID
 router.get('/clients/:clientId', AdminController.getClientById);
+// Route pour obtenir tous les clients avec le rôle "client"
+router.get('/clients/role/client', AdminController.getAllClientClients);
+
+// Route pour obtenir tous les clients avec le rôle "opérateur" ou "administrateur"
+router.get('/clients/role/operator-admin', AdminController.getAllOperatorAndAdminClients);
 
 
 

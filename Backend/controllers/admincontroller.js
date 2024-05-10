@@ -37,6 +37,26 @@ const AdminController = {
       console.error(error);
       res.status(500).json({ message: 'Erreur lors de la suppression du client' });
     }
+  },
+  getAllClientClients: async (req, res) => {
+    try {
+      const clientClients = await Client.find({ role: 'client' });
+      res.status(200).json(clientClients);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Erreur lors de la récupération des clients avec le rôle "client"' });
+    }
+  },
+
+  // Méthode pour obtenir tous les clients ayant le rôle "opérateur" ou "admin"
+  getAllOperatorAndAdminClients: async (req, res) => {
+    try {
+      const operatorAndAdminClients = await Client.find({ role: { $in: ['operator', 'admin'] } });
+      res.status(200).json(operatorAndAdminClients);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Erreur lors de la récupération des clients avec les rôles "opérateur" ou "admin"' });
+    }
   }
 };
 
