@@ -13,6 +13,46 @@ const ClientController = {
       res.status(500).json({ message: 'Erreur lors de la récupération des rendez-vous du client' });
     }
   },
+   // Modifier un rendez-vous existant
+   modifierRendezVous: async (req, res) => {
+    try {
+      const { rendezVousId } = req.params;
+      const { date, statut, numeroTicket, montant } = req.body;
+
+      // Recherche du rendez-vous à modifier
+      let rendezVous = await RendezVous.findById(rendezVousId);
+      if (!rendezVous) {
+        return res.status(404).json({ message: 'Rendez-vous non trouvé' });
+      }
+
+      // Mise à jour des champs du rendez-vous
+      rendezVous.date = date;
+      rendezVous.statut = statut;
+      rendezVous.numeroTicket = numeroTicket;
+      rendezVous.montant = montant;
+
+      // Sauvegarde du rendez-vous modifié
+      await rendezVous.save();
+      res.status(200).json({ message: 'Rendez-vous modifié avec succès' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Erreur lors de la modification du rendez-vous' });
+    }
+  },
+
+  // Annuler un rendez-vous
+  annulerRendezVous: async (req, res) => {
+    try {
+      const { rendezVousId } = req.params;
+
+      // Recherche du rendez-vous à annuler
+      const rendezVous = await RendezVous.findByIdAndDelete(rendezVousId);
+      res.status(200).json({ message: 'Rendez-vous annulé avec succès' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Erreur lors de l\'annulation du rendez-vous' });
+    }
+  },
 
   // Prendre un rendez-vous pour un service spécifique
   prendreRendezVous: async (req, res) => {
