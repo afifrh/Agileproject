@@ -23,6 +23,21 @@ const OperatorController = {
       res.status(500).json({ message: 'Erreur lors de la récupération des rendez-vous en attente' });
     }
   },
+  getRendezVousEnAttentebyDate: async (req, res) => {
+    const currentDate=new Date()
+    let rendezVousEnAttentebyDate 
+    try {
+      const rendezVousEnAttente = await RendezVous.find({ statut: 'en_attente' }).populate('idClient');
+      for (let index = 0; index < rendezVousEnAttente.length(); index++) {
+          if(rendezVousEnAttente[i].date==this.currentDate)    
+          rendezVousEnAttentebyDate.push(rendezVousEnAttente[i])
+      }
+      res.status(200).json(rendezVousEnAttentebyDate);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Erreur lors de la récupération des rendez-vous en attente' });
+    }
+  },
 
   // Méthode pour recharger la carte d'un client
   rechargerCarte: async (req, res) => {

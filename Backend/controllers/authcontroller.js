@@ -29,9 +29,9 @@ const AuthController = {
   // Méthode pour gérer l'inscription des utilisateurs
   register: async (req, res) => {
     try {
-      const { username, password } = req.body;
+      const { username, password, role } = req.body;
       // Créer un nouvel utilisateur
-      const client = new Client({ username, password });
+      const client = new Client({ username, password, role });
       await client.save();
       res.status(201).json({ message: 'Inscription réussie' });
     } catch (error) {
