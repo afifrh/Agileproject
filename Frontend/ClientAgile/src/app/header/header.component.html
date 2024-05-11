@@ -11,49 +11,25 @@
                         <a href="" class="light_logo"><img src="assets/img/agil.png" alt="logo"
                                 style="height: 3rem;width: 3rem; "></a>
                     </div>
-
+                    @if(isLoggedin){
+                    <div class="logo">
+                        <a (click)="openProfile()"><img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" class="rounded-circle shadow-4"
+                            style="width: 3rem; " alt="Avatar"  /></a>
+                    </div>
+                }
                     <div class="mainnav d-none d-xl-block">
+                        
                         <ul class="main-menu">
+                            
                             <li class="menu-item"><a href="">Home</a>
 
                             </li>
                             <li class="menu-item"><a href="/About">About Us</a></li>
 
-                            <!-- <li class="menu-item menu-item-has-children"><a href="#">Pages</a>
-                                <ul class="sub-menu">
-                                    <li class="menu-item menu-item-has-children"><a href="#">Case Studies</a>
-                                        <ul class="sub-menu">
-                                            <li class="menu-item"><a href="case.html">Case List</a></li>
-                                            <li class="menu-item"><a href="case-details.html">Case Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item menu-item-has-children"><a href="#">Our Team</a>
-                                        <ul class="sub-menu">
-                                            <li class="menu-item"><a href="team-1.html">Team Grid One</a></li>
-                                            <li class="menu-item"><a href="team-2.html">Team Grid Two</a></li>
-                                            <li class="menu-item"><a href="team-details.html">Team Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item menu-item-has-children"><a href="#">Shop</a>
-                                        <ul class="sub-menu">
-                                            <li class="menu-item"><a href="shop.html">Shop</a></li>
-                                            <li class="menu-item"><a href="shop-product.html">Product Details</a></li>
-                                            <li class="menu-item"><a href="shop-cart.html">Cart</a></li>
-                                            <li class="menu-item"><a href="shop-checkout.html">Checkout</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item"><a href="coming-soon.html">Coming Soon</a></li>
-                                    <li class="menu-item"><a href="404.html">404 Error</a></li>
-                                    <li class="menu-item"><a href="login.html">Login</a></li>
-                                </ul>
+                            <li class="menu-item "><a href="/AddRdv">Rendez-vous</a>
+                              
                             </li>
-                            <li class="menu-item menu-item-has-children"><a href="#">Services</a>
-                                <ul class="sub-menu">
-                                    <li class="menu-item"><a href="services-1.html">Services One</a></li>
-                                    <li class="menu-item"><a href="services-2.html">Services Two</a></li>
-                                    <li class="menu-item"><a href="service-details.html">Service Details</a></li>
-                                </ul>
-                            </li> -->
+                           
 
                             <li class="menu-item "><a href="/Contact">Contact</a> </li>
                         </ul>
@@ -94,7 +70,14 @@
                     </div>
                 </div>
             }@else {
-                <div class="wptb-item--button m-1">
+                <div class="header_right_part d-flex align-items-center">
+                    <div class="container d-flex align-items-">
+                        <!-- <div class="wptb-item--button m-1">
+                            <img src="https://mdbcdn.b-cdn.net/img/new/avatars/1.webp" class="rounded-circle shadow-4"
+  style="width: 3rem; padding: 4%;" alt="Avatar" />
+                        </div> -->
+                        <div class="wptb-item--button m-1">
+                    
                             <a class="btn-two" href="" (click)="Logout()">
                                 <div class="btn-wrap">
                                     <span class="text-first">Logout</span>
@@ -103,6 +86,9 @@
                                 </div>
                             </a>
                         </div>
+                    </div>
+                </div>
+                
             }
             </div>
         </div>

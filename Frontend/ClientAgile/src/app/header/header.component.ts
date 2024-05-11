@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ProfileComponent } from '../ModalPopup/profile/profile.component';
 
 @Component({
   selector: 'app-header',
@@ -10,10 +12,11 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   isLoggedin = false;
-constructor(private router:Router){}
+  constructor(private router: Router, private modalService: NgbModal) {}
   ngOnInit(): void {
-  this.isLoggedIn()  }
-  
+    this.isLoggedIn();
+  }
+
   isLoggedIn() {
     let token = localStorage.getItem('myToken');
     if (token) {
@@ -23,9 +26,11 @@ constructor(private router:Router){}
     }
   }
 
-
-  Logout(){
-    localStorage.removeItem("myToken")
-    this.router.navigate["/Login"]
+  Logout() {
+    localStorage.removeItem('myToken');
+    this.router.navigate['/Login'];
+  }
+  openProfile() {
+    this.modalService.open(ProfileComponent); // Replace with your modal component reference
   }
 }

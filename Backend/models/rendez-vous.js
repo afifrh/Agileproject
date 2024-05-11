@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
+var mongoose = require('mongoose');
 
 // Schéma pour le modèle RendezVous
-const rendezVousSchema = new mongoose.Schema({
+var rendezVousSchema = new mongoose.Schema({
   idClient: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Client',

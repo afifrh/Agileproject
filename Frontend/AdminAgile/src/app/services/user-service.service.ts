@@ -31,18 +31,12 @@ export class UserServiceService {
   signup(user: any) {
     return this.http.post(`${this.apiUrl}/register`, user);
   }
-  //  data(token:string)
-  // {
-  //   return this.http.get(`${this.apiUrl}/info/`);
 
-  // }
   login(user: any) {
     return this.http
       .post(`${this.apiUrl}/login`, user)
       .pipe(
-        tap((res: any) =>
-          localStorage.setItem('access_token', res.access_token)
-        )
+        tap((res: any) => localStorage.setItem('myToken', res.access_token))
       );
   }
 
@@ -51,13 +45,14 @@ export class UserServiceService {
     let id = jwtDecode(token)['id'];
     return id;
   }
-  getUserRole(): string[] | null {
+  getUserRole() {
     let token = localStorage.getItem('myToken');
     let role = jwtDecode(token)['role'];
     return role;
   }
   isLoggedIn() {
-    if (this.getId()) {
+    let token = localStorage.getItem('myToken');
+    if (token) {
       return true;
     } else {
       return false;
@@ -70,8 +65,8 @@ export class UserServiceService {
     const url = `${this.apiUrl + '/admin/clients'}/${id}`;
     return this.http.delete(url, httpOptions);
   }
-  // updateUser(id: number, evaluation: User) {
-  //   const url = `${this.apiUrl + '/'}/${id}`;
-  //   return this.http.put<any>(url, evaluation);
-  // }
+  updateUser(id: string, user: User) {
+    const url = `${this.apiUrl + '/admin/updateclients'}/${id}`;
+    return this.http.put<any>(url, user);
+  }
 }

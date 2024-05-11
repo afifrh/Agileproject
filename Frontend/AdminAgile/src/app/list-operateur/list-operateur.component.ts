@@ -8,19 +8,29 @@ import { User } from '../Models/User.model';
 import { jwtDecode } from 'jwt-decode';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faClose, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { UpdateUserComponent } from '../update-user/update-user.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-list-operateur',
   standalone: true,
   templateUrl: './list-operateur.component.html',
   styleUrl: './list-operateur.component.css',
-  imports: [MenuComponent, HeaderComponent, FooterComponent, FontAwesomeModule,RouterLink],
+  imports: [
+    MenuComponent,
+    HeaderComponent,
+    FooterComponent,
+    FontAwesomeModule,
+    RouterLink,
+  ],
 })
 export class ListOperateurComponent implements OnInit {
   faClose = faClose;
   faEdit = faEdit;
   userList: User[];
   role: any;
+  private modalService: NgbModal;
+
   constructor(private service: UserServiceService, private router: Router) {}
   ngOnInit(): void {
     this.service.getAdminsOperators().subscribe((data) => {
@@ -37,4 +47,5 @@ export class ListOperateurComponent implements OnInit {
       });
     }
   }
+  
 }

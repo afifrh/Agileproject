@@ -1,0 +1,9 @@
+div{
+    background: linear-gradient(to right bottom, rgb(71, 71, 66), rgb(255, 193, 5));
+    /* background-color: black; */
+    border:solid 1px crimson;
+    box-shadow: 3px 3px red, -1em 0 1.4em olive;
+color: rgba(228, 4, 4, 0.831);}
+div::-webkit-scrollbar {
+    display: none;
+}

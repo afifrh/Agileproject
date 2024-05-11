@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
 import { Observable, tap } from 'rxjs';
+import { User } from '../Models/User.model';
 
 
 const httpOptions = {
@@ -49,4 +50,10 @@ export class UserService {
       return false;
     }
   }
+
+  updateUser(id: string, user: User) {
+    const url = `${this.apiUrl + '/admin/updateclients'}/${id}`;
+    return this.http.put<any>(url, user);
+  }
+ 
 }

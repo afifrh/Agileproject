@@ -8,21 +8,22 @@ const httpOptions = {
 };
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RdvService {
+  apiUrl = 'http://localhost:1999';
 
-  apiUrl = "http://localhost:1999";
-
-  constructor(private http:HttpClient) {
-    
-   }
+  constructor(private http: HttpClient) {}
 
   getRdv(): Observable<Rdv[]> {
-    return this.http.get<Rdv[]>(this.apiUrl + "/Operator/rendezvous");
+    return this.http.get<Rdv[]>(this.apiUrl + '/Operator/AllRdv');
   }
-  addRdv(rdv:any){
-    return this.http.post(`${this.apiUrl}/client/rendezvous`,rdv);
+  addRdv(rdv: any) {
+    return this.http.post(`${this.apiUrl}/client/rendezvous`, rdv);
   }
-  
+  getRdvByUser(id: string): Observable<Rdv[]> {
+    return this.http.get<Rdv[]>(
+      `${this.apiUrl + '/client/rendezvous'}/${id}`
+    );
+  }
 }

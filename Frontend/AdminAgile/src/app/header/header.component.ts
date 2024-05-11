@@ -25,9 +25,8 @@ export class HeaderComponent implements OnInit {
     this.service.getUserById(this.id).subscribe((data) => (this.user = data));
   }
   Logout() {
-    localStorage.removeItem('token');
-    this.router.navigate(['/LoginAdmin']);
-  }
+    localStorage.clear();
+this.router.navigate(['/LoginAdmin'])  }
   checkProfile() {
     this.modalService.open(ProfileComponent); // Replace with your modal component reference
   }

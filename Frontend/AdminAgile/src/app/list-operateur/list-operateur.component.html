@@ -41,7 +41,7 @@
                                         <td style="font-size: 1.25rem;">{{user?.role}}</td>
                                         @if(role=='admin'){
                                         <td >
-                                             <a routerLink="upadteOperator/{{user._id}}" type="submit"> <fa-icon
+                                             <a href="UpdateUser/{{user._id}}" type="submit"> <fa-icon
                                                     class=" text-warning" [icon]="faEdit"
                                                     style="font-size: 2rem; margin: 1rem;"></fa-icon></a> 
                                             <a type="submit" class="btn "

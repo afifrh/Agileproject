@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <app-header></app-header>
+    <app-menu></app-menu>
+    <main id="main" class="main">
+      <div class="pagetitle">
+        <h1>Form Elements</h1>
+      </div>
+      <!-- End Page Title -->
+
+      <section class="section">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">General Form Elements</h5>
+
+                <!-- General Form Elements -->
+                <form (ngSubmit)="UpdateRdv()" [formGroup]="RdvForm">
+                  <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">client</label>
+                    <div class="col-sm-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        formControlName="client"
+                        [(ngModel)]="rdv1.idClient"
+
+                      />
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">date</label>
+                    <div class="col-sm-10">
+                      <input
+                        type="text"
+                        class="form-control"
+                        formControlName="date"
+                        [(ngModel)]="rdv1.date"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">statut</label>
+                    <div class="col-sm-10">
+                      <select
+                        class="form-select"
+                        aria-label="Default select example"
+                        formControlName="statut"
+                        [(ngModel)]="rdv1.statut"
+                      >
+                        <option selected disabled>Choisir le statut</option>
+                        <option value="confirme">Confirme</option>
+                        <option value="termine">Termine</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">numeroTicket</label>
+                    <div class="col-sm-10">
+                      <input
+                        type="number"
+                        class="form-control"
+                        formControlName="numeroTicket"
+                        [(ngModel)]="rdv1.numeroTicket"
+                      />
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">montant</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" formControlName="montant"  [(ngModel)]="rdv1.montant">
+                                    </div>
+                                </div>
+                  <div class="row mb-3">
+                    <div class="col-sm-10">
+                      <button type="submit" class="btn btn-primary">
+                        Ajouter
+                      </button>
+                    </div>
+                  </div>
+                </form>
+                <!-- End General Form Elements -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- End #main -->
+    <app-footer></app-footer>
+
+    <a
+      href="#"
+      class="back-to-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+  </body>
+</html>

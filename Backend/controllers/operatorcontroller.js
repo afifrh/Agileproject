@@ -23,6 +23,16 @@ const OperatorController = {
       res.status(500).json({ message: 'Erreur lors de la récupération des rendez-vous en attente' });
     }
   },
+  
+  getAllRdv: async (req, res) => {
+    try {
+      const rdv = await RendezVous.find().populate('idClient');
+      res.status(200).json(rdv);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Erreur lors de la récupération les rendez-vous  du client' });
+    }
+  },
   getRendezVousEnAttentebyDate: async (req, res) => {
     const currentDate=new Date()
     let rendezVousEnAttentebyDate 
@@ -48,6 +58,21 @@ const OperatorController = {
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: 'Erreur lors du rechargement de la carte' });
+    }
+  },
+   getRdvById: async (req, res) => {
+    try {
+      const { rendezVousId } = req.params;
+      console.log(rendezVousId)
+      const rdv = await RendezVous.findById(rendezVousId);
+      console.log(rdv)
+      if (!rdv) {
+        return res.status(404).json({ message: 'Rendez-vous  non trouvé' });
+      }
+      res.status(200).json(rdv);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Erreur lors de la récupération du rendez-vous' });
     }
   },
 

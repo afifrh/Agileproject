@@ -11,12 +11,15 @@ export class HomeComponent implements OnInit {
   isLoggedin=false
 
   ngOnInit(): void {
-this.isLoggedIn()  }
+
+    this.isLoggedIn();
+  }
 
   isLoggedIn() {
     let token = localStorage.getItem('myToken');
     if (token) {
       this.isLoggedin = true;
+
     } else {
       this.isLoggedin = false;
     }

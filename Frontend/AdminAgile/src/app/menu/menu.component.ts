@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserServiceService } from '../services/user-service.service';
 
 @Component({
   selector: 'app-menu',
@@ -9,11 +10,12 @@ import { Component } from '@angular/core';
 })
 export class MenuComponent {
 role: string
-  
+  constructor(private userservice:UserServiceService){
+
+  }
   ngOnInit(): void {
 
-
-    this.role = localStorage.getItem('role') as string;
+  this.role=this.userservice.getUserRole()
 
 
     

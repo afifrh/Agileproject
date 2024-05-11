@@ -30,24 +30,15 @@ const AdminController = {
     updateClient: async (req, res) => {
       try {
         const { clientId } = req.params;
-        const { username, password, role } = req.body;
+        const { nom,prenom,email,tel,username, password, role } = req.body;
   
         // Vérifie si le client existe
-        const client = await Client.findById(clientId);
+        const client = await Client.findByIdAndUpdate(clientId,{ nom,prenom,email,tel,username, password, role });
         if (!client) {
           return res.status(404).json({ message: 'Client non trouvé' });
         }
   
-        // Met à jour les champs du client
-        if (username) {
-          client.username = username;
-        }
-        if (password) {
-          client.password = password;
-        }
-        if (role) {
-          client.role = role;
-        }
+     
   
         // Enregistre les modifications dans la base de données
         await client.save();

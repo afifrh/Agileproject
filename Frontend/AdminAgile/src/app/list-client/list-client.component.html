@@ -43,9 +43,7 @@
                                         <td>{{user.tel}}</td>
                                       @if(role=='admin'){
                                         <td >
-                                             <a routerLink="upadteOperator/{{user._id}}" type="submit"> <fa-icon
-                                                    class=" text-warning" [icon]="faEdit"
-                                                    style="font-size: 2rem; margin: 1rem;"></fa-icon></a> 
+                                            
                                             <a type="submit" class="btn "
                                                 (click)="onDelete(user._id)"><fa-icon
                                                     class=" text-danger" [icon]="faClose"

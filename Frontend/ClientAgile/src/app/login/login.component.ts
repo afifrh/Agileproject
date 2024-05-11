@@ -62,7 +62,9 @@ export class LoginComponent {
           localStorage.setItem("myToken", token);
           
 
-          this.router.navigate(['/']);
+          this.router.navigate(['/']).then(() => {
+            window.location.reload();
+          }); 
         },
         err => {
           console.log(err);
