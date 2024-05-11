@@ -13,7 +13,8 @@ router.get('/clients/role/client', AdminController.getAllClientClients);
 // Route pour obtenir tous les clients avec le rôle "opérateur" ou "administrateur"
 router.get('/clients/role/operator-admin', AdminController.getAllOperatorAndAdminClients);
 
-router.put('/updateclients/:clientId',AdminController.updateClient);
+router.put('/updateclients/:clientId ',AdminController.updateClient);
+router.put('/clients/resetpassword/:clientId', AdminController.resetPassword);
 
 // Route pour supprimer un utilisateur
 router.delete('/clients/:clientId', AdminController.deleteClient);

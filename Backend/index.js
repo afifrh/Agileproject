@@ -1,31 +1,30 @@
 const dotenv = require('dotenv');
-// const express = require('express');
-// const mongoose = require('mongoose');
+const express = require('express');
+const mongoose = require('mongoose');
 const cors = require('cors'); // Import cors middleware
 
-// const app = express();
-const express = require("express")
+const app = express();
+// const express = require("express")
 const http = require("http")
-const mongo = require("mongoose")
+// const mongo = require("mongoose")
 const config= require('./config/dbconnection.json')
  const bodyparser = require("body-parser")
-var app=express();
-// app.use(express.json());
+// var app=express();
+app.use(express.json());
  app.use(bodyparser.json())
-// const PORT = 1999;
+const PORT = 1999;
  dotenv.config();
 
 // Connexion à la base de données
-// mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-//   .then(() => console.log('DATABASE Connected '))
-//   .catch(err => console.error('Erreur de connexion à MongoDB :', err));
-mongo
-.connect(config.url,{
-        useNewUrlParser:true,
-        useUnifiedTopology:true
-    })
-    .then(()=>console.log("database connected"))
-    .catch(()=>console.log("not connected"))
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('DATABASE Connected '))
+  .catch(err => console.error('Erreur de connexion à MongoDB :', err));
+// mongo.connect(config.url,{
+//         useNewUrlParser:true,
+//         useUnifiedTopology:true
+//     })
+//     .then(()=>console.log("database connected"))
+//     .catch(()=>console.log("not connected"))
 
 // CORS Configuration
 const corsOptions = {
@@ -47,5 +46,5 @@ app.use("/operator", operatorroutes);
 
 // Démarrage du serveur
 const server=http.createServer(app)
-server.listen(1999,console.log("serve run"))
+server.listen(1999,console.log("database"))
 module.exports=app

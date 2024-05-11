@@ -7,11 +7,10 @@ const schemaTicket = new mongoose.Schema({
     ref: 'Client',
     required: true
   },
-  id_rendezvous: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'RendezVous',
+  montant: {
+    type: Number,
     required: true
-  },
+  }
   // Ajoutez d'autres champs si nécessaire
 });
 
