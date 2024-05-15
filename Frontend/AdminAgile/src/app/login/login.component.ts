@@ -4,35 +4,35 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { User } from '../Models/User.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
 
-    loginForm: FormGroup
+  loginForm: FormGroup
   constructor(
     private fb: FormBuilder,
     private service: UserServiceService,
     private router: Router, private toast: NgToastService
   ) {
-    let formControls = {
-      username: new FormControl('', [
-        Validators.required,
-        Validators.email
-
-      ]),
-      password: new FormControl('', [
-        Validators.required,
-
-      ])
+     
+   let formControls = {
+      username: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]]
     }
 
     this.loginForm = this.fb.group(formControls)
+   
+    /* this.loginForm = this.fb.group({
+      username: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]]
+    });  */
   }
 
   get username() { return this.loginForm.get('username') }
@@ -42,7 +42,7 @@ export class LoginComponent {
     let data = this.loginForm.value;
     console.log(data);
     let admin = new User(
-      undefined, undefined, undefined,  undefined,undefined,data.username, data.password,undefined);
+      undefined, undefined, undefined, undefined, undefined, data.username, data.password, undefined);
     console.log(admin);
     if (
 

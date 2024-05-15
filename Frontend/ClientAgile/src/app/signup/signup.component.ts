@@ -4,34 +4,27 @@ import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { User } from '../Models/User.model';
 import { UserService } from '../services/user.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,CommonModule],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
 })
 export class SignupComponent {
 OperatorForm: FormGroup
   constructor(private service: UserService, private router: Router, private fb: FormBuilder, private toast: NgToastService) {
-    let formControls = {
-      nom: new FormControl('', [
-        Validators.required,]),
+    let formControls = {   
+        nom: ['', [Validators.required]],
 
-      prenom: new FormControl('', [
-        Validators.required,]),
+        prenom: ['', [Validators.required]],
       
-      email: new FormControl('', [
-        Validators.required,
-        Validators.required, Validators.email]),
-      tel: new FormControl('', [
-        Validators.required,]),
-        username: new FormControl('', [
-        Validators.required,]),
-      password: new FormControl('', [
-        Validators.required,]),
-     
+        email: ['', [Validators.required, Validators.email]],
+        tel: ['', [Validators.required]],
+        username: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
     }
     this.OperatorForm = this.fb.group(formControls)
   }

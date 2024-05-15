@@ -22,6 +22,9 @@
                                         <div class="col-lg-12 col-md-12 mb-4">
                                             <div class="form-group">
                                             <input type="text" class="form-control" formControlName="nom" placeholder="nom">
+                                            <div class="text-danger" *ngIf="OperatorForm.get('nom')?.touched && OperatorForm.get('nom').errors?.['required']">
+                                                name required
+                                            </div>
 
                                             </div>
                                         </div>
@@ -29,6 +32,9 @@
                                         <div class="col-lg-12 col-md-12 mb-4">
                                             <div class="form-group">
                                             <input type="text" class="form-control" formControlName="prenom"placeholder="prenom">
+                                            <div class="text-danger" *ngIf="OperatorForm.get('prenom')?.touched && OperatorForm.get('prenom').errors?.['required']">
+                                                prenom required
+                                            </div>
 
                                             </div>
                                         </div>
@@ -36,6 +42,9 @@
                                         <div class="col-lg-12 col-md-12 mb-4">
                                             <div class="form-group">
                                             <input type="email" class="form-control" formControlName="email" placeholder="email">
+                                            <div class="text-danger" *ngIf="OperatorForm.get('email')?.touched && OperatorForm.get('email').errors?.['required']">
+                                                Email required
+                                            </div>
 
                                             </div>
                                         </div>
@@ -43,6 +52,9 @@
                                         <div class="col-lg-12 col-md-12 mb-4">
                                             <div class="form-group">
                                             <input type="text" class="form-control" formControlName="tel" placeholder="tel">
+                                            <div class="text-danger" *ngIf="OperatorForm.get('tel')?.touched && OperatorForm.get('tel').errors?.['required']">
+                                                Telephone required
+                                            </div>
 
                                             </div>
                                         </div>
@@ -50,12 +62,18 @@
                                         <div class="col-lg-12 col-md-12 mb-4">
                                             <div class="form-group">
                                         <input type="text" class="form-control" formControlName="username" placeholder="username">
+                                        <div class="text-danger" *ngIf="OperatorForm.get('username')?.touched && OperatorForm.get('username').errors?.['required']">
+                                            username required
+                                        </div>
 
                                             </div>
                                         </div>
                                         <div class="col-lg-12 col-md-12 mb-4">
                                             <div class="form-group">
                                             <input type="password" class="form-control" formControlName="password" placeholder="password">
+                                            <div class="text-danger" *ngIf="OperatorForm.get('password')?.touched && OperatorForm.get('password').errors?.['required']">
+                                                password required
+                                            </div>
 
                                             </div>
                                         </div>

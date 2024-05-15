@@ -7,35 +7,29 @@ import { User } from '../Models/User.model';
 import { HeaderComponent } from "../header/header.component";
 import { MenuComponent } from "../menu/menu.component";
 import { FooterComponent } from "../footer/footer.component";
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-add-operator',
     standalone: true,
     templateUrl: './add-operator.component.html',
     styleUrl: './add-operator.component.css',
-    imports: [ReactiveFormsModule, HeaderComponent, MenuComponent, FooterComponent]
+    imports: [ReactiveFormsModule, HeaderComponent, MenuComponent, FooterComponent,FormsModule,CommonModule]
 })
 export class AddOperatorComponent {
  OperatorForm: FormGroup
   constructor(private service: UserServiceService, private router: Router, private fb: FormBuilder, private toast: NgToastService) {
     let formControls = {
-      nom: new FormControl('', [
-        Validators.required,]),
+      nom: ['', [Validators.required]],
 
-      prenom: new FormControl('', [
-        Validators.required,]),
+        prenom: ['', [Validators.required]],
       
-      email: new FormControl('', [
-        Validators.required,
-        Validators.required, Validators.email]),
-      tel: new FormControl('', [
-        Validators.required,]),
-        username: new FormControl('', [
-        Validators.required,]),
-      password: new FormControl('', [
-        Validators.required,]),
-      role: new FormControl('', [
-        Validators.required,]),
+        email: ['', [Validators.required, Validators.email]],
+        tel: ['', [Validators.required]],
+        username: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      role: ['', [Validators.required]],
     }
     this.OperatorForm = this.fb.group(formControls)
   }

@@ -20,13 +20,19 @@
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 mb-4">
                                             <div class="form-group">
-                                                <input  type="text" name="username" class="form-control" id="yourUsername" required formControlName="username">
+                                                <input type="email" name="username" class="form-control" id="username" required formControlName="username">
+                                                <div class="text-danger"  *ngIf="loginForm.get('username')?.touched && loginForm.get('username').errors?.['required']">
+                                                    username required
+                                                </div>
                                             </div>
                                         </div>
 
                                         <div class="col-lg-12 col-md-12 mb-4">
                                             <div class="form-group">
                                             <input type="password" name="password" class="form-control" id="yourPassword" required formControlName="password">
+                                            <div class="text-danger" *ngIf="loginForm.get('password')?.touched && loginForm.get('password').errors?.['required']">
+                                                password required
+                                            </div>
                                             </div>
                                         </div>
 

@@ -26,37 +26,59 @@
                                 <div class="row mb-3">
                                     <label  class="col-sm-2 col-form-label">Nom</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" formControlName="nom">
+                                        <input type="text" class="form-control" formControlName="nom" >
+                                         <div class="text-danger" *ngIf="OperatorForm.get('nom')?.touched && OperatorForm.get('nom').errors?.['required']">
+                                                name required
+                                            </div>
+                                        
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label  class="col-sm-2 col-form-label">Prenom</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" formControlName="prenom">
+                                        <div class="text-danger" *ngIf="OperatorForm.get('prenom')?.touched && OperatorForm.get('prenom').errors?.['required']">
+                                            prenom required
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label  class="col-sm-2 col-form-label">Email</label>
                                     <div class="col-sm-10">
                                         <input type="email" class="form-control" formControlName="email">
+                                        <div class="text-danger" *ngIf="OperatorForm.get('email')?.touched && OperatorForm.get('email').errors?.['required']">
+                                            email required
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label  class="col-sm-2 col-form-label">Telephone</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" formControlName="tel">
+                                        <div class="text-danger" *ngIf="OperatorForm.get('tel')?.touched && OperatorForm.get('tel').errors?.['required']">
+                                            Telephone required
+                                        </div>
                                     </div>
+                                    
                                 </div><div class="row mb-3">
                                     <label  class="col-sm-2 col-form-label">Username</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" formControlName="username">
+                                        <div class="text-danger" *ngIf="OperatorForm.get('username')?.touched && OperatorForm.get('username').errors?.['required']">
+                                            username required
+                                        </div>
                                     </div>
+                                   
                                 </div>
                                 <div class="row mb-3">
                                     <label  class="col-sm-2 col-form-label">Password</label>
                                     <div class="col-sm-10">
                                         <input type="password" class="form-control" formControlName="password">
+                                        <div class="text-danger" *ngIf="OperatorForm.get('password')?.touched && OperatorForm.get('password').errors?.['required']">
+                                            password required
+                                        </div>
                                     </div>
+                                   
                                 </div>
 
 

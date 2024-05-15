@@ -30,7 +30,7 @@ const AdminController = {
   },
     // Méthode pour mettre à jour un client
     updateClient: async (req, res) => {
-      try { 
+      try {
         const { clientId } = req.params;
         const { username, password, role } = req.body;
   
@@ -40,12 +40,14 @@ const AdminController = {
           return res.status(404).json({ message: 'Client non trouvé' });
         }
   
-        // Met à jour les champs du client
+        // Met à jour les champs du client (y compris le mot de passe)
         if (username) {
           client.username = username;
         }
         if (password) {
-          client.password = password;
+          // Génère un nouveau mot de passe haché
+          const hashedPassword = await bcrypt.hash(password, 10);
+          client.password = hashedPassword;
         }
         if (role) {
           client.role = role;
@@ -60,6 +62,7 @@ const AdminController = {
         res.status(500).json({ message: 'Erreur lors de la mise à jour du client' });
       }
     },
+    
     
     
 
@@ -93,33 +96,8 @@ const AdminController = {
       console.error(error);
       res.status(500).json({ message: 'Erreur lors de la récupération des clients avec les rôles "opérateur" ou "admin"' });
     }
-  },
-  resetPassword: async (req, res) => {
-    try {
-      const { clientId } = req.params;
-      const { password } = req.body;
-
-      // Vérifie si le client existe
-      const client = await Client.findByIdAndUpdate(clientId);
-      if (!client) {
-        return res.status(404).json({ message: 'Client non trouvé' });
-      }
-
-      // Génère un nouveau mot de passe haché
-      const hashedPassword = await bcrypt.hash(password, 10);
-
-      // Met à jour le mot de passe du client
-      client.password = hashedPassword;
-
-      // Enregistre les modifications dans la base de données
-      await client.save();
-
-      res.status(200).json({ message: 'Mot de passe réinitialisé avec succès' });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Erreur lors de la réinitialisation du mot de passe du client' });
-    }
   }
+
 };
 
 

@@ -5,11 +5,12 @@ import { User } from '../Models/User.model';
 import { UserService } from '../services/user.service';
 import { NgToastService } from 'ng-angular-popup';
 import { jwtDecode } from 'jwt-decode';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -21,15 +22,10 @@ export class LoginComponent {
     private router: Router, private toast: NgToastService
   ) {
     let formControls = {
-      username: new FormControl('', [
-        Validators.required,
-        Validators.email
+      username: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]]
 
-      ]),
-      password: new FormControl('', [
-        Validators.required,
-
-      ])
+      
     }
 
     this.loginForm = this.fb.group(formControls)
