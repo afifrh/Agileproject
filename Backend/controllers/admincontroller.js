@@ -32,32 +32,29 @@ const AdminController = {
     updateClient: async (req, res) => {
       try {
         const { clientId } = req.params;
-        const { nom,prenom,email,tel,username, password, role } = req.body;
-  
+        const { nom, prenom, email, tel, username, role } = req.body;
+
         // Vérifie si le client existe
-        const client = await Client.findByIdAndUpdate(clientId,{ nom,prenom,email,tel,username, password, role });
+        const client = await Client.findByIdAndUpdate(clientId, {
+          nom,
+          prenom,
+          email,
+          tel,
+          username,
+          role,
+        });
+        console.log(clientId);
         if (!client) {
-          return res.status(404).json({ message: 'Client non trouvé' });
+          return res.status(404).json({ message: "Client non trouvé" });
         }
-  
-     
-        // Met à jour les champs du client (y compris le mot de passe)
-        if (username) {
-          client.username = username;
-        }
-        if (password) {
-          // Génère un nouveau mot de passe haché
-          const hashedPassword = await bcrypt.hash(password, 10);
-          client.password = hashedPassword;
-        }
-        if (role) {
-          client.role = role;
-        }
-  
+
         // Enregistre les modifications dans la base de données
         await client.save();
-  
-        res.status(200).json({ message: 'Client mis à jour avec succès', updatedClient: client });
+
+        res.status(200).json({
+          message: "Client mis à jour avec succès",
+          updatedClient: client,
+        });
       } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Erreur lors de la mise à jour du client' });

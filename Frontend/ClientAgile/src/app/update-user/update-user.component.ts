@@ -46,6 +46,7 @@ export class UpdateUserComponent {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       let id = params.get('id');
+      console.log(id);
       this.service.getUserById(id).subscribe((data) => {
         if (id === this.CurrentId) {
           this.SameId = true;
@@ -98,8 +99,7 @@ export class UpdateUserComponent {
         data.prenom == 0 ||
         data.email == 0 ||
         data.tel == 0 ||
-        data.username == 0 ||
-        data.role == 0
+        data.username == 0 
       ) {
         this.toast.info({
           detail: ' Message d erreur',

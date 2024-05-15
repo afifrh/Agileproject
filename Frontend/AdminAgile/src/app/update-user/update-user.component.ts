@@ -46,7 +46,6 @@ export class UpdateUserComponent implements OnInit {
       ]),
       tel: new FormControl('', [Validators.required]),
       username: new FormControl('', [Validators.required]),
-      password: new FormControl({ value: '', disabled: true }),
       role: new FormControl('', [Validators.required]),
     };
     this.OperatorForm = this.fb.group(formControls);
@@ -99,7 +98,7 @@ export class UpdateUserComponent implements OnInit {
         data.email,
         data.tel,
         data.username,
-        this.user1.password,
+        this.user.password,
         data.role      
         );
       console.log(this.user1);
