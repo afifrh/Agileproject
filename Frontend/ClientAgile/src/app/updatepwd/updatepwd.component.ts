@@ -1,26 +1,24 @@
 import { Component } from '@angular/core';
 import { FooterComponent } from "../footer/footer.component";
 import { HeaderComponent } from "../header/header.component";
-import { FormGroup, FormBuilder, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { User } from '../Models/User.model';
 import { UserService } from '../services/user.service';
 
 @Component({
-  selector: 'app-update-user',
+  selector: 'app-updatepwd',
   standalone: true,
-  templateUrl: './update-user.component.html',
-  styleUrl: './update-user.component.css',
+  templateUrl: './updatepwd.component.html',
+  styleUrl: './updatepwd.component.css',
   imports: [FooterComponent, HeaderComponent,ReactiveFormsModule],
 })
-export class UpdateUserComponent {
+export class UpdatepwdComponent {
   UserForm: FormGroup;
   user: any;
   user1: any;
 
-  CurrentId: string;
-  SameId: any;
   constructor(
     private service: UserService,
     private router: Router,
@@ -29,17 +27,10 @@ export class UpdateUserComponent {
     private route: ActivatedRoute
   ) {
     let formControls = {
-      nom: new FormControl('', ),
+      password: new FormControl(''),
 
-      prenom: new FormControl('', ),
 
-      email: new FormControl('', [
-        Validators.required,
-        Validators.required,
-        Validators.email,
-      ]),
-      tel: new FormControl('', ),
-      username: new FormControl('', ),
+      
     };
     this.UserForm = this.fb.group(formControls);
   }
@@ -47,29 +38,11 @@ export class UpdateUserComponent {
     this.route.paramMap.subscribe((params) => {
       let id = params.get('id');
       this.service.getUserById(id).subscribe((data) => {
-        if (id === this.CurrentId) {
-          this.SameId = true;
-        }
+        
 
         this.user = data;
-        this.CurrentId = this.service.getId();
       });
     });
-  }
-  get nom() {
-    return this.UserForm.get('nom');
-  }
-  get prenom() {
-    return this.UserForm.get('prenom');
-  }
-  get username() {
-    return this.UserForm.get('username');
-  }
-  get tel() {
-    return this.UserForm.get('tel');
-  }
-  get email() {
-    return this.UserForm.get('email');
   }
   get password() {
     return this.UserForm.get('password');
@@ -84,29 +57,25 @@ export class UpdateUserComponent {
       console.log(data);
       this.user1 = new User(
         undefined,
-        data.nom,
-        data.prenom,
-        data.email,
-        data.tel,
-        data.username,
-        this.user.password,
-        "client"      );
+        this.user.nom,
+        this.user.prenom,
+        this.user.email,
+        this.user.tel,
+        this.user.username,
+        data.password,
+this.user.role      );
       console.log(this.user1);
 
       if (
-        data.nom == 0 ||
-        data.prenom == 0 ||
-        data.email == 0 ||
-        data.tel == 0 ||
-        data.username == 0 ||
-        data.role == 0
+        data.password == 0 
+        
       ) {
         this.toast.info({
           detail: ' Message d erreur',
           summary: 'Remplir votre champs',
         });
       } else {
-        this.service.updateUser(id, this.user1).subscribe(
+        this.service.updatePwd(id, this.user1).subscribe(
           (res) => {
             console.log(res);
             this.toast.success({
@@ -127,6 +96,4 @@ export class UpdateUserComponent {
       }
     });
   }
-
-  
 }

@@ -1,6 +1,7 @@
 const dotenv = require('dotenv');
 const express = require('express');
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
+const mongo = require('mongoose');
 const cors = require('cors'); // Import cors middleware
 
 const app = express();
@@ -16,15 +17,15 @@ const PORT = 1999;
  dotenv.config();
 
 // Connexion à la base de données
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('DATABASE Connected '))
-  .catch(err => console.error('Erreur de connexion à MongoDB :', err));
-// mongo.connect(config.url,{
-//         useNewUrlParser:true,
-//         useUnifiedTopology:true
-//     })
-//     .then(()=>console.log("database connected"))
-//     .catch(()=>console.log("not connected"))
+// mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+//   .then(() => console.log('DATABASE Connected '))
+//   .catch(err => console.error('Erreur de connexion à MongoDB :', err));
+mongo.connect(config.url,{
+        useNewUrlParser:true,
+        useUnifiedTopology:true
+    })
+    .then(()=>console.log("database connected"))
+    .catch(()=>console.log("not connected"))
 
 // CORS Configuration
 const corsOptions = {

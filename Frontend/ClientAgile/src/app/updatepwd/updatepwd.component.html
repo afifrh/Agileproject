@@ -1,0 +1,59 @@
+
+<main class="wrapper">
+
+
+    <!-- My Account -->
+    <section class="pd-bottom-300">
+        <div class="container ">
+
+            <div class="wptb-login-form ">
+                <div class="wptb-form--wrapper  ">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-10 offset-lg-2 offset-md-1">
+                            <div class="wptb-heading ">
+                                <div class="wptb-item--inner">
+                                    <h1 class="wptb-item--title"> Mettre à jour votre mot de passe</h1>
+                                </div>
+                            
+                                <div class=" modal-body p-4" style="background-color: black;">
+                                    <form (ngSubmit)="UpdateUser()" [formGroup]="UserForm" style="background-color: black;">
+                                        <!-- Email input -->
+                                    
+                                        
+                                      
+                                        <div data-mdb-input-init class="form-outline mb-4 ">
+                                        <label class="form-label"> nouvelle mot de passe</label>
+                                        <input
+                                            type="password"
+                                            class="form-control "
+                                            formControlName="password"
+                                            style="background-color: rgb(141, 141, 141);"
+                                           
+                                        />
+                                        </div>
+                                            
+                                    
+                                        <!-- Submit button -->
+                                        <a
+                                        (click)="UpdateUser()"
+                                        type="submit"
+                                        data-mdb-button-init
+                                        data-mdb-ripple-init
+                                        class="btn btn-primary btn-block"
+                                        >
+                                        update
+                                    </a>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+</main>
+<!-- Modal -->

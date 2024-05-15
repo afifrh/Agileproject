@@ -55,5 +55,10 @@ export class UserService {
     const url = `${this.apiUrl + '/admin/updateclients'}/${id}`;
     return this.http.put<any>(url, user);
   }
+
+  updatePwd(id: string, user: User) {
+    const url = `${this.apiUrl + '/admin/clients/resetpassword'}/${id}`;
+    return this.http.put<any>(url, user);
+  }
  
 }

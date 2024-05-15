@@ -9,9 +9,10 @@ import { AddRdvComponent } from './add-rdv/add-rdv.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { UserRdvComponent } from './user-rdv/user-rdv.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { UpdatepwdComponent } from './updatepwd/updatepwd.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent,  },
+  { path: '', component: HomeComponent },
   { path: 'Login', component: LoginComponent },
   { path: 'Signup', component: SignupComponent },
   {
@@ -37,6 +38,11 @@ export const routes: Routes = [
   {
     path: 'UpdateProfile/:id',
     component: UpdateUserComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'Updatepwd/:id',
+    component: UpdatepwdComponent,
     canActivate: [AuthGuardService],
   },
   { path: '**', component: E404Component },
