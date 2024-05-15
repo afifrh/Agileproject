@@ -12,6 +12,7 @@
                             <div class="d-flex justify-content-center py-4">
                                 <a href="index.html" class="logo d-flex align-items-center w-auto">
                                     <img src="assets/img/Agil_Logo.gif" alt="" style="margin-top: -5%;">
+                                    
 
                                 </a>
                             </div><!-- End Logo -->
@@ -25,9 +26,9 @@
                                         <p class="text-center small">Entrer votre email et votre mot de passe</p>
                                     </div>
 
-                                     <form class="row g-3 needs-validation" (ngSubmit)="login()" [formGroup]="loginForm">
+                                    <form class="row g-3 needs-validation" (ngSubmit)="login()" [formGroup]="loginForm">
                                         <div class="col-12">
-                                            <label  class="form-label">Username</label>
+                                            <label class="form-label">Username</label>
                                             <div class="input-group has-validation">
                                                 <input type="text" name="username" class="form-control"
                                                     id="yourUsername" required formControlName="username">
@@ -40,6 +41,12 @@
                                                     format d'email
                                                 </small>
                                             </div> -->
+                                            <div class="text-danger" *ngIf="loginForm.get('username')?.touched && loginForm.get('username').errors?.['required']">
+                                                
+                                            </div>
+                                            <div class="text-danger"  *ngIf="loginForm.get('username')?.touched && loginForm.get('username').errors?.['required']">
+                                                username required
+                                            </div>
                                         </div>
 
                                         <div class="col-12">
@@ -47,6 +54,9 @@
                                             <input type="password" name="password" class="form-control"
                                                 id="yourPassword" required formControlName="password">
                                             <div class="invalid-feedback">donnez votre mot de passe</div>
+                                            <div class="text-danger" *ngIf="loginForm.get('password')?.touched && loginForm.get('password').errors?.['required']">
+                                                password required
+                                            </div>
                                             <!-- <div *ngIf="mdp?.touched && mdp?.invalid">
                                                 <small class="text-danger" *ngIf="mdp?.errors?.['required']">mot de
                                                     passe
@@ -58,7 +68,7 @@
                                         <div class="col-12" style="margin-top: 3%;">
                                             <button class="btn btn-warning w-100" type="submit">Login</button>
                                         </div>
-                                        
+
                                     </form>
 
                                 </div>

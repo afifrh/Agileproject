@@ -1,76 +1,67 @@
 <main class="wrapper">
-  <!-- My Account -->
-  <section class="pd-bottom-300">
-    <div class="container">
-      <div class="wptb-login-form">
-        <div class="wptb-form--wrapper">
-          <div class="row">
-            <div class="col-lg-8 col-md-10 offset-lg-2 offset-md-1">
-              <div class="wptb-heading">
-                <div class="wptb-item--inner">
-                  <h1 class="wptb-item--title">Log In</h1>
+
+
+    <!-- My Account -->
+    <section class="pd-bottom-300">
+        <div class="container">
+
+            <div class="wptb-login-form">
+                <div class="wptb-form--wrapper">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-10 offset-lg-2 offset-md-1">
+                            <div class="wptb-heading">
+                                <div class="wptb-item--inner">
+                                    <h1 class="wptb-item--title"> Log In</h1>
+                                </div>
+                            </div>
+
+                            <form class="wptb-form"(ngSubmit)="login()" [formGroup]="loginForm">
+                                <div class="wptb-form--inner">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 mb-4">
+                                            <div class="form-group">
+                                                <input type="email" name="username" class="form-control" id="username" required formControlName="username">
+                                                <div class="text-danger"  *ngIf="loginForm.get('username')?.touched && loginForm.get('username').errors?.['required']">
+                                                    username required
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12 col-md-12 mb-4">
+                                            <div class="form-group">
+                                            <input type="password" name="password" class="form-control" id="yourPassword" required formControlName="password">
+                                            <div class="text-danger" *ngIf="loginForm.get('password')?.touched && loginForm.get('password').errors?.['required']">
+                                                password required
+                                            </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                                <input type="checkbox" name="remmeber">
+                                                <label for="remmeber" class="text-capitalize">Remmeber Password</label>
+                                            </div>
+                                            <a href="/Signup">Vous n'avez pas un compte? </a>
+                                            <div class="wptb-item--button mt-4">
+                                                <button class="btn-two white" type="submit">
+                                                    <div class="btn-wrap">
+                                                        <span class="text-first"> Login </span>
+                                                        <span class="text-second"> <i
+                                                                class="bi bi-box-arrow-in-right"></i> </span>
+                                                    </div>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-              </div>
-
-              <form
-                class="wptb-form"
-                (ngSubmit)="login()"
-                [formGroup]="loginForm"
-              >
-                <div class="wptb-form--inner">
-                  <div class="row">
-                    <div class="col-lg-12 col-md-12 mb-4">
-                      <div class="form-group">
-                        <input
-                          type="text"
-                          name="username"
-                          class="form-control"
-                          id="yourUsername"
-                          required
-                          formControlName="username"
-                        />
-                      </div>
-                    </div>
-
-                    <div class="col-lg-12 col-md-12 mb-4">
-                      <div class="form-group">
-                        <input
-                          type="password"
-                          name="password"
-                          class="form-control"
-                          id="yourPassword"
-                          required
-                          formControlName="password"
-                        />
-                      </div>
-                    </div>
-
-                    <div class="col-md-12 col-lg-12">
-                      <div class="form-group">
-                        <input type="checkbox" name="remmeber" />
-                        <label for="remmeber" class="text-capitalize"
-                          >Remmeber Password</label
-                        >
-                      </div>
-                      <a href="/Signup">Vous n'avez pas un compte? </a>
-                      <div class="wptb-item--button mt-4">
-                        <button class="btn-two white" type="submit">
-                         
-                            <div class="btn-wrap">
-                              <span class="text-first">Login </span>
-                              <span class="text-second">
-                                <i class="bi bi-box-arrow-in-right"></i>
-                              </span></div>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </form>
             </div>
-          </div>
+
+              
+            
         </div>
-      </div>
-    </div>
   </section>
 </main>

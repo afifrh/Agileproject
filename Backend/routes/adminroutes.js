@@ -14,7 +14,6 @@ router.get('/clients/role/client', AdminController.getAllClientClients);
 router.get('/clients/role/operator-admin', AdminController.getAllOperatorAndAdminClients);
 
 router.put('/updateclients/:clientId ',AdminController.updateClient);
-router.put('/clients/resetpassword/:clientId', AdminController.resetPassword);
 
 // Route pour supprimer un utilisateur
 router.delete('/clients/:clientId', AdminController.deleteClient);
