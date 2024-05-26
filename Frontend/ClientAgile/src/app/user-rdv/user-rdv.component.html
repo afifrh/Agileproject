@@ -20,8 +20,10 @@
                                     <tr>
                                         <th scope="col">Date</th>
                                         <th scope="col">Statut</th>
+                                        <th scope="col">Departement</th>
                                         <th scope="col">Numero Ticket</th>
                                         <th scope="col">Montant</th>
+                                        <th scope="col">Annuler rendez-vous</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -30,9 +32,17 @@
 
                                         <td style="font-size: 1.25rem;">{{rdv.date}}</td>
                                         <td style="font-size: 1.25rem;">{{rdv.statut}}</td>
+                                        <td style="font-size: 1.25rem;">{{rdv.departement}}</td>
                                         <td style="font-size: 1.25rem;">{{rdv.numeroTicket}}</td>
                                         <td style="font-size: 1.25rem;">{{rdv.montant}}</td>
-
+                                        <td >
+                                            
+                                            <a type="submit" 
+                                                (click)="Annuler(rdv._id)"><fa-icon
+                                                    class=" text-danger" [icon]="faClose"
+                                                   style="font-size: 2rem;" ></fa-icon></a>
+                                                    
+                                        </td>
                                     </tr>
                                     }
                                 </tbody>

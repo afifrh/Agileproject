@@ -26,4 +26,8 @@ export class RdvService {
       `${this.apiUrl + '/client/rendezvous'}/${id}`
     );
   }
+  annulerRdv(id: string) {
+    const url = `${this.apiUrl + '/client/rendezvous'}/${id}`;
+    return this.http.delete(url, httpOptions);
+  }
 }

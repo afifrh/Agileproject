@@ -29,7 +29,7 @@ export class AuthGuardService implements CanActivate {
     if (isLoggedIn) {
       return true;
     } else {
-      this.router.navigate(['/LoginAdmin']);
+      this.router.navigate(['/Login']);
 
       return false;
     }

@@ -18,19 +18,8 @@
     </div>
 
     <!-- password input -->
-    <div data-mdb-input-init class="form-outline mb-4">
-      <label class="form-label">Numero ticket</label>
-
-      <input
-        type="number"
-        class="form-control"
-        formControlName="numeroTicket"
-        placeholder="numeroTicket"
-                style="background-color: rgb(141, 141, 141);"
-
-      />
-    </div>
-    <div data-mdb-input-init class="form-outline mb-4">
+    
+    <div data-mdb-input-init class="">
       <label class="form-label" >Montant</label>
 
       <input
@@ -42,6 +31,21 @@
 
       />
     </div>
+    <div class="form-outline mb-4">
+                    <label class="form-label">Departement</label>
+                      <select
+                        class="form-control"
+                        aria-label="Default select example"
+                        formControlName="departement"
+                        style="background-color: rgb(141, 141, 141);"
+                      >
+                        <option selected disabled>Choisir le departement</option>
+                        <option value="Tunis">Tunis</option>
+                        <option value="Sousse">Sousse</option>
+                        <option value="Sfax">Sfax</option>
+                        
+                      </select>
+                  </div>
     <!-- Submit button -->
     <button
       type="submit"

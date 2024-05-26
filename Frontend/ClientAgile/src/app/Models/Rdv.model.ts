@@ -4,6 +4,7 @@ export class Rdv {
     public idClient?: String,
     public date?: Date,
     public statut?: string,
+    public departement?: string,
     public numeroTicket?: number,
     public montant?: number
   ) {}

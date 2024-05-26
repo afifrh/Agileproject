@@ -57,10 +57,21 @@ const ClientController = {
   // Prendre un rendez-vous pour un service spécifique
   prendreRendezVous: async (req, res) => {
     try {
-      const { idClient, date, statut, numeroTicket, montant } = req.body;
-      console.log( { idClient, date, statut, numeroTicket, montant } )
+      const { idClient, date, departement, statut, montant } = req.body;
+      console.log( { idClient, date, statut, montant } )
+      const count = await RendezVous.countDocuments();
+
+      // Generate the new numeroTicket
+      const numeroTicket = count + 1;
       // Implémenter la logique pour prendre un rendez-vous
-      const nouveauRendezVous = new RendezVous({ idClient: idClient, date:date, status:statut, numeroTicket:numeroTicket, montant:montant });
+      const nouveauRendezVous = new RendezVous({
+        idClient: idClient,
+        date: date,
+        status: statut,
+        departement: departement,
+        numeroTicket: numeroTicket,
+        montant: montant,
+      });
       await nouveauRendezVous.save();
       res.status(201).json({ message: 'Rendez-vous pris avec succès' });
     } catch (error) {

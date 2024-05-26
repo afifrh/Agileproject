@@ -35,7 +35,7 @@ export class RdvPopupComponent {
       date: new FormControl('', [Validators.required]),
       // statut: new FormControl('', [
       //   Validators.required,]),
-      numeroTicket: new FormControl('', [Validators.required]),
+      departement: new FormControl('', [Validators.required]),
       montant: new FormControl('', [Validators.required]),
     };
     this.RdvForm = this.fb.group(formControls);
@@ -57,12 +57,13 @@ export class RdvPopupComponent {
       this.iduser,
       data.date,
       'en_attente',
-      data.numeroTicket,
+      data.departement,
+      undefined,
       data.montant
     );
     console.log(rdv);
 
-    if (data.date == 0 || data.numeroTicket == 0 || data.montant == 0) {
+    if (data.date == 0 || data.departement == 0 || data.montant == 0) {
       this.toast.info({
         detail: ' Message d erreur',
         summary: 'Remplir votre champs',

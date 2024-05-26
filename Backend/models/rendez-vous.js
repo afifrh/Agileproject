@@ -4,27 +4,31 @@ var mongoose = require('mongoose');
 var rendezVousSchema = new mongoose.Schema({
   idClient: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Client',
-    required: true
+    ref: "Client",
+    required: true,
   },
   date: {
     type: Date,
-    required: true
+    required: true,
   },
   statut: {
     type: String,
-    enum: ['en_attente', 'confirme', 'termine', 'annule'],
-    default: 'en_attente'
+    enum: ["en_attente", "confirme", "termine", "annule"],
+    default: "en_attente",
+  },
+  departement: {
+    type: String,
+    enum: ["Tunis", "Sousse", "Sfax"],
+    required:true,
   },
   numeroTicket: {
     type: Number,
-    required: true,
-    unique: true
+    unique: true,
   },
   montant: {
     type: Number,
-    required: true
-  }
+    required: true,
+  },
 });
 
 // Créer et exporter le modèle RendezVous
